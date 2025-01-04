@@ -54,7 +54,6 @@ shared.homenet = {
 		
 	end,
 }
-table.freeze(shared.homenet) -- protect module
 
 print("homenet module loaded and online.")
 
