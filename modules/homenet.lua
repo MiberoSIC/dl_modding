@@ -5,7 +5,7 @@
 -- COMPONENT: HOMENET SAME-SIDE-SIGNALS MODULE --
 
 -- homenet object
-local homenet = {
+shared.homenet = {
 	new = function()
 		
 		-- signal object to be returned
@@ -54,7 +54,7 @@ local homenet = {
 		
 	end,
 }
-table.freeze(homenet) -- protect module
+table.freeze(shared.homenet) -- protect module
 
 print("homenet module loaded and online.")
 
@@ -63,7 +63,7 @@ print("homenet module loaded and online.")
 --[[ overview of module functionality
 
 * creates a signal object
-local sig = homenet.new()
+local sig = shared.homenet.new()
 
 * binds the given function to the signal, returns a binding object
 local sig_conn = sig:bind(function(text)
