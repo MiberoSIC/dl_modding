@@ -1,3 +1,6 @@
+
+-- works
+
 print("I run immediately.")
 
 local chatscribe = {}
