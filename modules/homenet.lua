@@ -5,55 +5,55 @@
 -- COMPONENT: HOMENET SAME-SIDE-SIGNALS MODULE --
 
 -- homenet object
-shared.homenet = {
-	new = function()
-		
-		-- signal object to be returned
-		local signal = {
-			bindings = {};
+shared.homenet = {}
+
+function shared.homenet.new()
+	
+	-- signal object to be returned
+	local signal = {
+		bindings = {};
+	}
+
+	-- calls all bound functions, passing the given arguments
+	function signal:fire(...)
+		for _,exe in self.bindings do
+			exe(...)
+		end
+	end
+
+	-- lists the given function as a binding of the signal, returns a binding object
+	function signal:bind(executable : (...any) -> ())
+
+		table.insert(self.bindings,executable)
+
+		-- stores signal and bind indicator
+		local binding = {
+			is_bound = true;
+			signal = self;
 		}
-		
-		-- calls all bound functions, passing the given arguments
-		function signal:fire(...)
-			for _,exe in self.bindings do
-				exe(...)
-			end
-		end
-		
-		-- lists the given function as a binding of the signal, returns a binding object
-		function signal:bind(executable : (...any) -> ())
-			
-			table.insert(self.bindings,executable)
-			
-			-- stores signal and bind indicator
-			local binding = {
-				is_bound = true;
-				signal = self;
-			}
-			-- destroys the binding, is_bound = false
-			function binding:unbind()
-				
-				self.is_bound = false
-				for i,exe in self.signal.bindings do
-					if exe ~= executable then
-						continue
-					end
-					
-					self.signal.bindings[i] = nil
-					return
-						
+		-- destroys the binding, is_bound = false
+		function binding:unbind()
+
+			self.is_bound = false
+			for i,exe in self.signal.bindings do
+				if exe ~= executable then
+					continue
 				end
-				
+
+				self.signal.bindings[i] = nil
+				return
+
 			end
-			
-			return binding
-			
+
 		end
-		
-		return signal
-		
-	end,
-}
+
+		return binding
+
+	end
+
+	return signal
+	
+end
 
 print("homenet module loaded and online.")
 
