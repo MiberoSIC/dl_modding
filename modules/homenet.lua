@@ -2,7 +2,7 @@
 -- homenet v0.1.0
 -- By: Ralephis (mibero_)
 
--- COMPONENT: HOMENET SAME-SIDE-SIGNALS MODULE --
+-- COMPONENT: HOMENET INTERNAL SIGNALS MODULE --
 
 -- homenet object
 homenet = {}
