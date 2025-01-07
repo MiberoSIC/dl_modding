@@ -5,9 +5,9 @@
 -- COMPONENT: HOMENET INTERNAL SIGNALS MODULE --
 
 -- homenet object
-homenet = {}
+shared.homenet = {}
 
-function homenet.new()
+function shared.homenet.new()
 	
 	-- signal object to be returned
 	local signal = {
