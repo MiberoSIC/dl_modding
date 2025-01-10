@@ -1,13 +1,13 @@
 
--- homenet v0.1.0
+-- isigs v0.1.0
 -- By: Ralephis (mibero_)
 
--- COMPONENT: HOMENET INTERNAL SIGNALS MODULE --
+-- COMPONENT: ISIGS INTERNAL SIGNALLING MODULE --
 
--- homenet object
-shared.homenet = {}
+-- isigs object
+shared.isigs = {}
 
-function shared.homenet.new()
+function shared.isigs.new()
 	
 	-- signal object to be returned
 	local signal = {
@@ -55,14 +55,14 @@ function shared.homenet.new()
 	
 end
 
-print("homenet module loaded and online.")
+print("isigs module loaded and online.")
 
 -- COMPONENT END --
 
 --[[ overview of module functionality
 
 * creates a signal object
-local sig = homenet.new()
+local sig = isigs.new()
 
 * binds the given function to the signal, returns a binding object
 local sig_conn = sig:bind(function(text)
