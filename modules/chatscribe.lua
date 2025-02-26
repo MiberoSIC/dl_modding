@@ -25,7 +25,7 @@ local chatscribe = {
 
 	whitelist = {
 
-		userIDs = {3401131717};
+		userIDs = {};
 
 		names = {}; -- players who are in this list are automatically whitelisted when they join
 
