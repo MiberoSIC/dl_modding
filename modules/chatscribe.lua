@@ -47,6 +47,8 @@ local chatscribe = {
 
 }
 
+shared.chatscribe_whitelist = chatscribe.whitelist.userIDs -- whitelist can be directly edited via "shared" global
+
 print(`chatscribe v0.1.0`)
 print(`By: Ralephis (mibero_)`)
 print(`Type "{chatscribe.prefix}commands" in the chat to view chatscribe commands.`)
