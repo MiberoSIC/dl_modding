@@ -130,25 +130,3 @@ do
 end
 
 print("killbricks module loaded.")
-
--- Some default kill-messages.
-killbricks.addKillMessages({
-	"_user discovered where the no-step zone was.";
-	"_user took the highway to the danger zone.";
-	"Darwin has a lot to learn from _user.";
-	"Yes, _user, doing that will kill you.";
-	"Hello, _user. Goodbye, _user.";
-	"_user is still getting the hang of it.";
-	"That was... unadvisable, _user.";
-	"Stick to what you know, eh _user?";
-	"Killbrick: 1, _user: 0.";
-	"Sorry, _user. Invitation only.";
-	"Don't worry, _user. I'm sure something different will happen next time.";
-	"_user refused to kneel to Mr. Deadline.";
-	"Maybe _user needs clearer instructions.";
-	"Ouch, sorry _user. That could really use a sign.";
-	"Bye-bye, _user.";
-	"_user was given more time to ponder the menu.";
-	"Welcome to the club, _user.";
-	"Oof, _user. So close... I think."
-})
