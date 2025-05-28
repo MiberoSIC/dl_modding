@@ -22,7 +22,7 @@ sequentialPrint({
 	"Made by Ralephis (@mibero_)";
 	"";
 	"Refer to the killbricks folder as an example of how killbricks should look in your map.";
-	`Run "shared.killbricks.enable()" after loading your map to enable killbricks.`;
+	`Run shared.killbricks.enable() after loading your map to enable killbricks.`;
 })
 
 local killbricks = {}
