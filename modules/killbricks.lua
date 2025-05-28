@@ -49,8 +49,8 @@ do
 		local part_size = part.Size
 
 		return 		plr_deviation.X <= part.Size.X/2
-			or		plr_deviation.Y <= part.Size.Y/2
-			or		plr_deviation.Z <= part.Size.Z/2
+			and		plr_deviation.Y <= part.Size.Y/2
+			and		plr_deviation.Z <= part.Size.Z/2
 	end
 
 	local function makePartsInvisible(parts: {Part}): ()
@@ -61,7 +61,7 @@ do
 
 	local function getKillbricks(): {Part?}
 		local bricks = tags.get_tagged(killbrick_folder_tag)[1].get_children()
-		--makePartsInvisible(bricks)
+		makePartsInvisible(bricks)
 		return bricks
 	end
 
