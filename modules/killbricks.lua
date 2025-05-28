@@ -61,7 +61,7 @@ do
 
 	local function getKillbricks(): {Part?}
 		local bricks = tags.get_tagged(killbrick_folder_tag)[1].get_children()
-		makePartsInvisible(bricks)
+		--makePartsInvisible(bricks)
 		return bricks
 	end
 
