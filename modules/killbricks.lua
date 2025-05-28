@@ -29,7 +29,7 @@ local killbricks = {}
 shared.killbricks = killbricks
 do
 
-	local killbrick_checks_per_second = 3
+	local seconds_per_killbrick_check = 1
 	local killbrick_folder_tag = "killbrick_folder" -- Ensure that the folder has this tag.
 
 	-- "_user" will be replaced with the player's name.
@@ -95,7 +95,7 @@ do
 		local new_killbrick_thread = task.spawn(function()
 			
 
-			while task.wait(killbrick_checks_per_second) do
+			while task.wait(seconds_per_killbrick_check) do
 				for _,player in players.get_alive() do
 
 					for _,brick in killbricks do
