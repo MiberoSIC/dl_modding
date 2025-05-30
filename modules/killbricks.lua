@@ -1,5 +1,6 @@
 
--- Killbrick code.
+-- killbricks
+local _killbricks_version = "0.1.1"
 -- Made by Ralephis (@mibero_)
 
 -- Killbricks are made invisible upon enabling.
@@ -18,25 +19,27 @@ local function fatalError(message: string): ()
 end
 
 sequentialPrint({
-	"Loading killbricks module...";
+	`Loading killbricks module... ({_killbricks_version})`;
 	"Made by Ralephis (@mibero_)";
 	"";
 	"Refer to the killbricks folder as an example of how killbricks should look in your map.";
 	`Run shared.killbricks.enable() after loading your map to enable killbricks.`;
+	"";
 })
 
 local killbricks = {}
 shared.killbricks = killbricks
 do
-
+	
+	local killmessage_chance = 0.4
 	local seconds_per_killbrick_check = 1
 	local killbrick_folder_tag = "killbrick_folder" -- Ensure that the folder has this tag.
-
+	
+	
+	
 	-- "_user" will be replaced with the player's name.
-	-- There should always be at least 1 message here.
-	local killbrick_messages: {string} = { -- Some default kill-messages.
-		"Killbricks will indeed kill."
-	}
+	-- Ex. "_user was killed" -> "awesomeJon61 was killed"
+	local killbrick_messages: {string} = {}
 
 	local function getRandomItemFromArray(arr: {any}): any
 		local rand_index = math.random(1, #arr)
@@ -68,14 +71,20 @@ do
 	local function sendKillbrickMessage(plr_name: string): ()
 		local message = string.gsub(getRandomItemFromArray(killbrick_messages), "_user", plr_name)
 		if not message then
-			fatalError("Could not get kill-message! Make sure there is at least 1 message registered.")
+			fatalError("Could not get kill-message.")
 		end
 		chat.send_announcement(message)
 	end
 
+	local function testChances(chance_of_success: number): boolean
+		return math.random(0,1000) <= chance_of_success*1000
+	end
+
 	local function killPlayerViaKillbrick(player): ()
 		player.kill()
-		sendKillbrickMessage(player.name)
+		if #killbrick_messages > 0 and testChances(killmessage_chance) then
+			sendKillbrickMessage(player.name)
+		end
 	end
 
 	local killbrick_thread: thread = nil
@@ -90,10 +99,10 @@ do
 			warn("Could not enable killbricks; no killbricks found.")
 			return
 		end
-		
+
 		killKillbrickThread()
 		local new_killbrick_thread = task.spawn(function()
-			
+
 
 			while task.wait(seconds_per_killbrick_check) do
 				for _,player in players.get_alive() do
@@ -117,6 +126,11 @@ do
 		for _,str in new_messages do
 			table.insert(killbrick_messages, str)
 		end
+	end
+
+	function killbricks.setKillMessageChance(chance: number): ()
+		killmessage_chance = math.clamp(chance,0,1)
+		print(`Kill-message chances updated. {killmessage_chance*100}% chance of a killbrick death message.`)
 	end
 
 	function killbricks.enable()
