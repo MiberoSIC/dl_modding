@@ -191,7 +191,7 @@ end
 do
 	local id = `debug`
 	local function announceToggling(): ()
-		chat.send_announcement(`Debugging toggled {if debuggingEnabled then "on" else "off" end}.`)
+		chat.send_announcement(`Debugging toggled {if debuggingEnabled then "on" else "off"}.`)
 	end
 	local debugFunc: CmdFunc = function(caller: dl_Player, args: CallArgs): ()
 		if args[1] == `on` then
