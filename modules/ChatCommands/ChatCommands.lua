@@ -22,9 +22,9 @@ type AuthStatus = boolean
 
 local debuggingEnabled = true
 
-local function debugPrint(value: any): ()
+local function debugPrint(...): ()
 	if not debuggingEnabled then return end
-	print(`ChatCommands: ` .. value)
+	print(`ChatCommands: ` .. ...)
 end
 debugPrint(`ChatCommands script loaded. Debugging mode is enabled.`)
 
