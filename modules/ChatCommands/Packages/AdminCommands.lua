@@ -166,7 +166,7 @@ ChatCommands.add(
 		local target = TargetCollector.getTargets({caller = caller; clue = clue})
 		for _,plr in target do
 			plr.kill()
-			print(`Killed {plr.name}.`)
+			announce(`Killed {plr.name}.`)
 		end
 	end)
 )
