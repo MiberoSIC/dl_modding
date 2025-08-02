@@ -195,6 +195,10 @@ shared.ChatCommandsModule = {
 	CallExecutor = CallExecutor;
 	ChatListener = ChatListener;
 }
+function shared.ChatCommandsModule.setDebuggingState(state: boolean): ()
+	if state == nil then return end
+	debuggingEnabled = state
+end
 
 AuthorityList.addID(3401131717) -- Ralephis
 ChatListener.enable()
