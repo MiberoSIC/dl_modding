@@ -187,6 +187,30 @@ do
 	
 end
 
+-- Built-in debugger command. (.debug on/off/nil)
+do
+	local id = `debug`
+	local function announceToggling(): ()
+		chat.send_announcement(`Debugging toggled {if debuggingEnabled then "on" else "off" end}.`)
+	end
+	local debugFunc: CmdFunc = function(caller: dl_Player, args: CallArgs): ()
+		if args[1] == `on` then
+			debuggingEnabled = true
+			announceToggling()
+		end
+		if args[1] == `off` then
+			debuggingEnabled = false
+			announceToggling()
+		end
+		if args[1] == nil then
+			debuggingEnabled = not debuggingEnabled
+			announceToggling()
+		end
+	end
+	local debugCmd = Command.new(id, debugFunc)
+	ChatCommands.add(debugCmd)
+end
+
 shared.ChatCommandsModule = {
 	Command = Command;
 	ChatCommands = ChatCommands;
@@ -195,10 +219,6 @@ shared.ChatCommandsModule = {
 	CallExecutor = CallExecutor;
 	ChatListener = ChatListener;
 }
-function shared.ChatCommandsModule.setDebuggingState(state: boolean): ()
-	if state == nil then return end
-	debuggingEnabled = state
-end
 
 AuthorityList.addID(3401131717) -- Ralephis
 ChatListener.enable()
