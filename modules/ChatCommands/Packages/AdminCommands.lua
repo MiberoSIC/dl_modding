@@ -81,6 +81,7 @@ do
 		return dict
 	end
 	local function nameContainsFragment(name: string, frag: string): boolean
+		name, frag = name:lower(), frag:lower()
 		return name:sub(1,#frag) == frag
 	end
 	local function getGuesses(fragment: string): {dl_Player?}
