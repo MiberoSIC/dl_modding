@@ -38,7 +38,10 @@ do
 		end
 		return valid_players
 	end
-	
+
+	keywordAlgorithms[`self`] = function(caller)
+		return caller
+	end
 	keywordAlgorithms[`all`] = function(caller)
 		return players.get_all()
 	end
